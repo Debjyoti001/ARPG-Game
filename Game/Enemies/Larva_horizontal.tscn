@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://w8rwcr4xwc62"]
+[gd_scene load_steps=21 format=3 uid="uid://w8rwcr4xwc62"]
 
 [ext_resource type="Texture2D" uid="uid://c3gqk1ys0y84" path="res://Art/Larva2.png" id="1_531b2"]
 
@@ -137,8 +137,28 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_712sw"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omiyh"]
+radius = 6.0
+height = 12.0
+
 [node name="Larva" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p6fbg")
 animation = &"walkRight"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_712sw")
+
+[node name="hitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+shape = SubResource("CapsuleShape2D_omiyh")
